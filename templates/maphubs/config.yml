@@ -1,0 +1,8 @@
+name: MapHubs
+description: |
+  MapHubs web application
+version: 0.11.9
+category: Maps
+maintainer: "Kristofor Carle <kris@maphubs.com>"
+minimum_rancher_version: v1.2.3
+projectURL: http://www.maphubs.com
