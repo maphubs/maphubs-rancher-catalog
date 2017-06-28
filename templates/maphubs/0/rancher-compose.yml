@@ -43,7 +43,7 @@
       required: true
       default: "512"
       type: "int"
-     - variable: "auth0_domain"
+    - variable: "auth0_domain"
       description: |
         Auth0 domain
       label: "Auth0 Domain:"
