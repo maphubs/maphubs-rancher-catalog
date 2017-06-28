@@ -18,157 +18,159 @@
       type: "string"
     - variable: "maphubs_hostname"
       description: |
-       Host name for maphubs site
+        Host name for maphubs site
       label: "Host Name:"
       required: true
       type: "string"
     - variable: "host_volume_root"
       description: |
-       Docker host volume root, database files, uploads, logs, etc. will be created here 
+        Docker host volume root, database files, uploads, logs, etc. will be created here 
       label: "Docker Volume Root:"
       required: true
       default: "/mnt/maphubs_demo"
       type: "string"
     - variable: "maphubs_node_mem_size"
       description: |
-       NodeJS memory size for main web app      
+        NodeJS memory size for main web app      
       label: "Web Node MemSize:"
       required: true
       default: "2048"
       type: "int"
     - variable: "tiles_node_mem_size"
       description: |
-       NodeJS memory size for tiles service     
+        NodeJS memory size for tiles service     
       label: "Tiles Node MemSize:"
       required: true
       default: "512"
       type: "int"
      - variable: "auth0_domain"
       description: |
-       Auth0 domain
+        Auth0 domain
       label: "Auth0 Domain:"
       default: "maphubs.auth0.com"
       required: true
       type: "string"
      - variable: "auth0_client_id"
       description: |
-       Auth0 Client ID
+        Auth0 Client ID
       label: "Auth0 Client ID:"
       required: true
       type: "string"
      - variable: "auth0_client_secret"
       description: |
-       Auth0 Client Secret
+        Auth0 Client Secret
       label: "Auth0 Client Secret:"
       required: true
       type: "string"
      - variable: "auth0_callback_url"
       description: |
-       Auth0 Callback URL
+        Auth0 Callback URL
       label: "Auth0 Callback URL:"
       required: true
       type: "string"
     - variable: "sentry_dsn"
       description: |
-       Sentry DSN
+        Sentry DSN
       label: "Sentry DSN:"
       required: true
       type: "string"
     - variable: "sentry_dsn_public"
       description: |
-       Sentry Public DSN
+        Sentry Public DSN
       label: "Sentry Public DSN:"
       required: true
       type: "string"
     - variable: "mailgun_api_key"
       description: |
-       MailGun API Key
+        MailGun API Key
       label: "MailGun API Key:"
       required: true
       type: "string"
     - variable: "mapzen_api_key"
       description: |
-       Mapzen API key, used for location search
+        Mapzen API key, used for location search
       label: "Mapzen API Key:"
       required: true
       type: "string"
     - variable: "bing_api_key"
       description: |
-       BING API key, if using Bing satellite base map
+        BING API key, if using Bing satellite base map
       label: "BING API Key:"
       required: false
       type: "string"
     - variable: "planet_api_key"
       description: |
-       Planet API key, if using Planet features
+        Planet API key, if using Planet features
       label: "Planet API Key:"
       required: false
       type: "string"
     - variable: "elastic_link"
       description: |
-       ElasticSearch Docker Search Container Link
+        ElasticSearch Docker Search Container Link
       label: "ElasticSearch Container Link:"
       required: true
       default: "maphubs-elastic/elasticsearch-clients:elasticsearch"
       type: "string"
     - variable: "elastic_host"
       description: |
-       ElasticSearch Hostname
+        ElasticSearch Hostname
       label: "ElasticSearch Hostname:"
       required: true
       default: "elasticsearch"
       type: "string"
     - variable: "elastic_port"
       description: |
-       ElasticSearch Port
+        ElasticSearch Port
       label: "ElasticSearch Port:"
       required: true
       default: "9200"
       type: "int"
     - variable: "elastic_user"
       description: |
-       ElasticSearch User Name
+        ElasticSearch User Name
       label: "ElasticSearch User:"
       required: true
       default: "elastic"
       type: "string"
     - variable: "elastic_pass"
       description: |
-       ElasticSearch Password
+        ElasticSearch Password
       label: "ElasticSearch Password:"
       required: true
       default: "changeme"
       type: "string"
     - variable: "session_secret"
       description: |
-       Unique/random string to use as session secret
+        Unique/random string to use as session secret
       label: "Session Secret:"
       required: true
       type: "string"
     - variable: "manet_secret_key"
       description: |
-       Unique/random string used to secure Manet service
+        Unique/random string used to secure Manet service
       label: "Manet Secret Key:"
       required: true
       type: "string"
     - variable: "from_email"
       description: |
-       Admin/From email, Mailgun must be able to send with this email
+        Admin/From email, Mailgun must be able to send with this email
       label: "From Email:"
       default: "info@maphubs.com"
       required: true
       type: "string"
-    
-    
+
 tiles:
   scale: 1
   start_on_create: false
+
 manet:
   scale: 1
   start_on_create: false
+
 web:
   scale: 1
   start_on_create: false
+
 db:
   scale: 1
   start_on_create: false
