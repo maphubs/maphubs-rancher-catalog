@@ -139,6 +139,13 @@
       required: true
       default: "changeme"
       type: "string"
+    - variable: "elastic_index_name"
+      description: |
+        ElasticSearch Index Name
+      label: "ElasticSearch Index Name:"
+      required: true
+      default: "changeme"
+      type: "string"
     - variable: "session_secret"
       description: |
         Unique/random string to use as session secret
