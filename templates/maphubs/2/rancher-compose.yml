@@ -1,6 +1,6 @@
 .catalog:
   name: MapHubs
-  version: 0.11.10
+  version: 0.11.11
   description: MapHubs Web Application
   uuid: maphubs-web-0
   questions:
@@ -172,26 +172,26 @@
       description: |
         Host label to run this stack
       label: 'Host Label:'
-      default: "maphubs-id=maphubs"
+      default: maphubs-id=maphubs
       required: true
       type: string
 tiles:
   scale: 1
   start_on_create: false
   labels:
-    io.rancher.scheduler.affinity:host_label: ${hostLabel}
+    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
 manet:
   scale: 1
   start_on_create: false
   labels:
-    io.rancher.scheduler.affinity:host_label: ${hostLabel}
+    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
 web:
   scale: 1
   start_on_create: false
   labels:
-    io.rancher.scheduler.affinity:host_label: ${hostLabel}
+    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
 db:
   scale: 1
   start_on_create: false
   labels:
-    io.rancher.scheduler.affinity:host_label: ${hostLabel}
+    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'

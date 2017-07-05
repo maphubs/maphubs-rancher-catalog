@@ -1,7 +1,7 @@
 name: MapHubs
 description: |
   MapHubs web application
-version: 0.11.10
+version: 0.11.11
 category: Maps
 maintainer: Kristofor Carle <kris@maphubs.com>
 projectURL: 'http://www.maphubs.com'
