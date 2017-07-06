@@ -28,10 +28,14 @@ tiles:
     - '4001'
   labels:
     io.rancher.container.pull_image: always
+    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
 manet:
   image: 'quay.io/maphubs/manet:latest'
   expose:
     - '8891'
+  labels:
+    io.rancher.container.pull_image: always
+    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
 web:
   image: 'quay.io/maphubs/web:v0.11.11'
   environment:
@@ -99,6 +103,7 @@ web:
   labels:
     io.rancher.container.pull_image: always
     com.danieldent.rancher-lets-encrypt.hosts: '${maphubs_hostname}'
+    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
 db:
   image: 'quay.io/maphubs/db:latest'
   environment:
@@ -110,3 +115,6 @@ db:
     - '${host_volume_root}/var/lib/postgresql/data:/var/lib/postgresql/data'
   expose:
     - '5432'
+  labels:
+    io.rancher.container.pull_image: always
+    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'

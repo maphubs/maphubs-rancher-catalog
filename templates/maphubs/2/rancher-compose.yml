@@ -1,4 +1,5 @@
-.catalog:
+version: '2'
+catalog:
   name: MapHubs
   version: 0.11.11
   description: MapHubs Web Application
@@ -175,23 +176,16 @@
       default: maphubs-id=maphubs
       required: true
       type: string
-tiles:
-  scale: 1
-  start_on_create: false
-  labels:
-    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
-manet:
-  scale: 1
-  start_on_create: false
-  labels:
-    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
-web:
-  scale: 1
-  start_on_create: false
-  labels:
-    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
-db:
-  scale: 1
-  start_on_create: false
-  labels:
-    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
+services:
+  tiles:
+    scale: 1
+    start_on_create: false
+  manet:
+    scale: 1
+    start_on_create: false
+  web:
+    scale: 1
+    start_on_create: false
+  db:
+    scale: 1
+    start_on_create: false
