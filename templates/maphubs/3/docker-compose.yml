@@ -37,7 +37,7 @@ manet:
     io.rancher.container.pull_image: always
     'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
 web:
-  image: 'quay.io/maphubs/web:v0.11.11'
+  image: 'quay.io/maphubs/web:v0.11.12'
   environment:
     BING_API_KEY: '${bing_api_key}'
     DB_DATABASE: maphubs
@@ -62,7 +62,6 @@ web:
     OMH_LOGO_SMALL: 'https://cdn.maphubs.com/assets/maphubs-logo-small.png'
     OMH_LOGO_WIDTH: '148'
     OMH_LOGO_WIDTH_SMALL: '70'
-    OMH_MAILGUN_API_KEY: '${mailgun_api_key}'
     OMH_MANET_API_KEY: '${manet_secret_key}'
     OMH_MANET_IP: ''
     OMH_MANET_URL: 'http://manet:8891'
@@ -91,6 +90,8 @@ web:
     AUTH0_CLIENT_SECRET: '${auth0_client_secret}'
     AUTH0_CALLBACK_URL: '${auth0_callback_url}'
     OMH_MAPZEN_API_KEY: '${mapzen_api_key}'
+    AWS_ACCESS_KEY_ID: '${aws_access_key_id}'
+    AWS_SECRET_ACCESS_KEY: '${aws_secret_access_key}'
   external_links:
     - '${elastic_link}'
   volumes:

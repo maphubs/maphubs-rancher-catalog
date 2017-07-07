@@ -84,10 +84,16 @@ catalog:
       label: 'Sentry Public DSN:'
       required: true
       type: string
-    - variable: mailgun_api_key
+    - variable: aws_access_key_id
       description: |
-        MailGun API Key
-      label: 'MailGun API Key:'
+        AWS_ACCESS_KEY_ID for SES email
+      label: 'AWS_ACCESS_KEY_ID:'
+      required: true
+      type: string
+    - variable: aws_secret_access_key
+      description: |
+        AWS_SECRET_ACCESS_KEY for SES email
+      label: 'AWS_SECRET_ACCESS_KEY:'
       required: true
       type: string
     - variable: mapzen_api_key
@@ -164,7 +170,7 @@ catalog:
       type: string
     - variable: from_email
       description: |
-        Admin/From email, Mailgun must be able to send with this email
+        Admin/From email
       label: 'From Email:'
       default: info@maphubs.com
       required: true
