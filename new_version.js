@@ -30,7 +30,7 @@ fs.copy('templates/maphubs/' + largest, 'templates/maphubs/' + next, function (e
   //console.log(doc);
   const rancherComposePath = 'templates/maphubs/' + next + '/rancher-compose.yml';
   var rancherCompose = yaml.safeLoad(fs.readFileSync(rancherComposePath));
-  rancherCompose['.catalog'].version = version;
+  rancherCompose.catalog.version = version;
   fs.writeFileSync(rancherComposePath, yaml.safeDump(rancherCompose));
   
   const dockerComposePath = 'templates/maphubs/' + next + '/docker-compose.yml';
