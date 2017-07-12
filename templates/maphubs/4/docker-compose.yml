@@ -37,7 +37,7 @@ manet:
     io.rancher.container.pull_image: always
     'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
 web:
-  image: 'quay.io/maphubs/web:v0.11.12'
+  image: 'quay.io/maphubs/web:v0.11.16'
   environment:
     BING_API_KEY: '${bing_api_key}'
     DB_DATABASE: maphubs
