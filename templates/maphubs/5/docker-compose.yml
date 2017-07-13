@@ -1,0 +1,121 @@
+tiles:
+  image: 'quay.io/maphubs/tiles:v0.9.2'
+  environment:
+    DB_DATABASE: maphubs
+    DB_HOST: db
+    DB_PASS: '${database_password}'
+    DB_PORT: '5432'
+    DB_USER: maphubs
+    DEBUG: 'maphubs:*'
+    NODE_MEM_SIZE: '${tiles_node_mem_size}'
+    OMH_HOST: '${maphubs_hostname}'
+    OMH_REQUIRE_LOGIN: 'true'
+    OMH_HOST_INTERNAL: web
+    OMH_INTERNAL_PORT: '4001'
+    OMH_MANET_API_KEY: '${manet_secret_key}'
+    OMH_MANET_IP: ''
+    OMH_MANET_URL: 'http://manet:8891'
+    OMH_PORT: '80'
+    OMH_SESSION_SECRET: '${session_secret}'
+    USE_HTTPS: 'true'
+    OMH_SENTRY_DSN: '${sentry_dsn}'
+  volumes:
+    - '${host_volume_root}/tiles:/data'
+  links:
+    - 'manet:manet'
+    - 'db:db'
+  expose:
+    - '4001'
+  labels:
+    io.rancher.container.pull_image: always
+    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
+manet:
+  image: 'quay.io/maphubs/manet:latest'
+  expose:
+    - '8891'
+  labels:
+    io.rancher.container.pull_image: always
+    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
+web:
+  image: 'quay.io/maphubs/web:v0.11.17'
+  environment:
+    BING_API_KEY: '${bing_api_key}'
+    DB_DATABASE: maphubs
+    DB_HOST: db
+    DB_PASS: '${database_password}'
+    DB_PORT: '5432'
+    DB_USER: maphubs
+    NODE_MEM_SIZE: '${maphubs_node_mem_size}'
+    OMH_ADMIN_EMAIL: '${from_email}'
+    OMH_BETA_TEXT: DEMO
+    OMH_CONTACT_EMAIL: support@maphubs.com
+    OMH_COPYRIGHT_TEXT: '2017 MapHubs, Inc.'
+    OMH_ENV_TAG: demo
+    OMH_FROM_EMAIL: '${from_email}'
+    OMH_HOST: '${maphubs_hostname}'
+    OMH_HOST_INTERNAL: web
+    OMH_HTTPS: 'true'
+    OMH_INTERNAL_PORT: '4000'
+    OMH_LOGO: 'https://cdn.maphubs.com/assets/maphubs-logo.png'
+    OMH_LOGO_HEIGHT: '40'
+    OMH_LOGO_HEIGHT_SMALL: '19'
+    OMH_LOGO_SMALL: 'https://cdn.maphubs.com/assets/maphubs-logo-small.png'
+    OMH_LOGO_WIDTH: '148'
+    OMH_LOGO_WIDTH_SMALL: '70'
+    OMH_MANET_API_KEY: '${manet_secret_key}'
+    OMH_MANET_IP: ''
+    OMH_MANET_URL: 'http://manet:8891'
+    OMH_MAPHUBS_PRO: 'true'
+    OMH_PORT: '80'
+    OMH_PRIMARY_COLOR: '#29ABE2'
+    OMH_PRODUCT_NAME: MapHubs (Demo)
+    OMH_REQUIRE_INVITE: 'true'
+    OMH_REQUIRE_LOGIN: 'true'
+    OMH_SESSION_SECRET: '${session_secret}'
+    OMH_THEME: map4env
+    OMH_TILESERVICE_INTERNAL_URL: 'http://tiles:4001'
+    OMH_TILESERVICE_URL: '${maphubs_hostname}'
+    OMH_TWITTER: maphubs
+    OMH_USE_MAPBOX_BASEMAPS: 'false'
+    OMH_ELASTICSEARCH_HOST: '${elastic_host}'
+    OMH_ELASTICSEARCH_PORT: '${elastic_port}'
+    OMH_ELASTICSEARCH_USER: '${elastic_user}'
+    OMH_ELASTICSEARCH_PASS: '${elastic_pass}'
+    OMH_ELASTICSEARCH_INDEXNAME: maphubs
+    PLANET_LABS_API_KEY: '${planet_api_key}'
+    OMH_SENTRY_DSN: '${sentry_dsn}'
+    OMH_SENTRY_DSN_PUBLIC: '${sentry_dsn_public}'
+    AUTH0_DOMAIN: '${auth0_domain}'
+    AUTH0_CLIENT_ID: '${auth0_client_id}'
+    AUTH0_CLIENT_SECRET: '${auth0_client_secret}'
+    AUTH0_CALLBACK_URL: '${auth0_callback_url}'
+    OMH_MAPZEN_API_KEY: '${mapzen_api_key}'
+    AWS_ACCESS_KEY_ID: '${aws_access_key_id}'
+    AWS_SECRET_ACCESS_KEY: '${aws_secret_access_key}'
+  external_links:
+    - '${elastic_link}'
+  volumes:
+    - '${host_volume_root}/app/temp/uploads:/app/temp/uploads'
+    - '${host_volume_root}/app/log:/app/log'
+  links:
+    - 'db:db'
+  expose:
+    - '4000'
+  labels:
+    io.rancher.container.pull_image: always
+    com.danieldent.rancher-lets-encrypt.hosts: '${maphubs_hostname}'
+    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
+db:
+  image: 'quay.io/maphubs/db:latest'
+  environment:
+    DB_DATABASE: maphubs
+    DB_PASS: '${database_password}'
+    DB_USER: maphubs
+    POSTGRES_PASSWORD: '${postgres_password}'
+  volumes:
+    - '${host_volume_root}/var/lib/postgresql/data:/var/lib/postgresql/data'
+  expose:
+    - '5432'
+  labels:
+    io.rancher.container.pull_image: always
+    'io.rancher.scheduler.affinity:host_label': '${hostLabel}'
